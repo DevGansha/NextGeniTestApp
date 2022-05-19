@@ -18,6 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/login_home"/>
+        android:text="@string/header_text"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
