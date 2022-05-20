@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">NextGeniTestApp</string>
 
-    <string name="login_home">Login to HealthApp</string>
+    <string name="header_text">Data</string>
 </resources>
