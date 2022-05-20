@@ -1,6 +1,5 @@
 package com.example.nextgenitestapp.di
 
-import Config
 import com.example.nextgenitestapp.data.ProductAppService
 import dagger.Module
 import dagger.Provides

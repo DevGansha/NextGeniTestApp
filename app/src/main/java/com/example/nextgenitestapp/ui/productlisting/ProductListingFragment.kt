@@ -11,16 +11,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.nextgenitestapp.R
+import com.example.nextgenitestapp.data.model.ResponseData
 import com.example.nextgenitestapp.databinding.FrProductListingBinding
 import com.example.nextgenitestapp.util.Resource
 import com.example.nextgenitestapp.util.Util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductListingFragment : Fragment(){
+class ProductListingFragment : Fragment(), RecyclerViewHomeClickListener{
 
     lateinit var frProductListingBinding: FrProductListingBinding
     val productListingViewModel: ProductListingViewModel by viewModels()
+    private val productsAdapter: ProductsAdapter by lazy { ProductsAdapter(requireContext(), this) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +35,9 @@ class ProductListingFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        frProductListingBinding.recyclerView.apply {
+            adapter = productsAdapter
+        }
         productListingViewModel.fetchPopular(27, 1)
         observeUI()
     }
@@ -41,17 +46,25 @@ class ProductListingFragment : Fragment(){
         productListingViewModel.productsList.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success -> {
-                    context?.toast("Success")
+                    frProductListingBinding.progress.visibility = View.GONE
+                    val data = it.data!!.body?.data
+                    productsAdapter.submitList(data!!)
                 }
                 is Resource.Error -> {
-                    context?.toast("Error")
+                    frProductListingBinding.progress.visibility = View.GONE
+                    it.message?.let { message ->
+                        context?.toast(message)
+                    }
                 }
 
                 is Resource.Loading -> {
-                    context?.toast("Loading")
+                    frProductListingBinding.progress.visibility = View.VISIBLE
                 }
 
             }
         }
+    }
+    override fun clickOnItem(data: ResponseData, card: View) {
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.nextgenitestapp.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ResponseBody (
     @SerializedName("current_page")
@@ -27,4 +28,4 @@ data class ResponseBody (
     var to : Int?= null,
     @SerializedName("total")
     var total: Int? = null
-)
+): Serializable
