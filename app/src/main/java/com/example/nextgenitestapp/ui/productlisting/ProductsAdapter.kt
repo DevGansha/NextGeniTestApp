@@ -12,8 +12,6 @@ import com.example.nextgenitestapp.databinding.LiProductBinding
 class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHomeClickListener) : RecyclerView.Adapter<ViewHolder>(){
     private lateinit var recyclerView: RecyclerView
 
-    private val TAG: String = "AppDebug"
-
     var items: List<ResponseData> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -68,3 +66,5 @@ class ViewHolder(private val binding: LiProductBinding) : RecyclerView.ViewHolde
 interface RecyclerViewHomeClickListener {
     fun clickOnItem(data: ResponseData, card: View)
 }
+
+
