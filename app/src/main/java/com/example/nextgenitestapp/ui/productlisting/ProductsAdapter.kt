@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nextgenitestapp.data.model.ResponseBody
 import com.example.nextgenitestapp.data.model.ResponseData
 import com.example.nextgenitestapp.databinding.LiProductBinding
 
 class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHomeClickListener) : RecyclerView.Adapter<ViewHolder>(){
     private lateinit var recyclerView: RecyclerView
-    lateinit var mActivity: AppCompatActivity
 
     private val TAG: String = "AppDebug"
 
@@ -26,8 +24,8 @@ class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHo
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items!!.get(position)
-        item?.let {
+        val item = items.get(position)
+        item.let {
             holder.apply {
                 bind(item, isLinearLayoutManager())
                 itemView.tag = item
@@ -36,7 +34,7 @@ class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHo
 
         holder.itemView.setOnClickListener {
             recyclerViewHome.clickOnItem(
-                item!!,
+                item,
                 holder.itemView
             )
         }
@@ -48,15 +46,12 @@ class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHo
     }
 
     override fun getItemCount(): Int {
-        if (items == null) {
-            return 0
-        } else {
-            return items!!.size
-        }
+        return items.size
     }
 
     fun submitList(itemList: List<ResponseData>){
-        items = itemList!!
+        //items.addAll(itemList)
+        items = itemList
         notifyDataSetChanged()
     }
 
@@ -64,7 +59,6 @@ class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHo
 }
 
 class ViewHolder(private val binding: LiProductBinding) : RecyclerView.ViewHolder(binding.root) {
-
     fun bind(data: ResponseData, isLinearLayoutManager: Boolean) {
         binding.apply {
             product = data
