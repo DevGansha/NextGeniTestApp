@@ -4,10 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nextgenitestapp.data.model.ResponseData
+import com.example.nextgenitestapp.data.model.productListingResponse.ResponseData
 import com.example.nextgenitestapp.databinding.LiProductBinding
 
 class ProductsAdapter(val context: Context, val recyclerViewHome: RecyclerViewHomeClickListener) : RecyclerView.Adapter<ViewHolder>(){

@@ -8,5 +8,18 @@
         android:id="@+id/productListingFragment"
         android:name="com.example.nextgenitestapp.ui.productlisting.ProductListingFragment"
         tools:layout="@layout/fr_product_listing"
-        android:label="ProductListingFragment" />
+        android:label="ProductListingFragment" >
+        <action
+            android:id="@+id/action_productListingFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment">
+            <argument
+                android:name="product_id"
+                app:argType="integer"/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.nextgenitestapp.ui.productdetail.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fr_product_detail"/>
 </navigation>

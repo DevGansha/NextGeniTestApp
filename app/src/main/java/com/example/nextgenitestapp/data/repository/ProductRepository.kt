@@ -1,7 +1,8 @@
 package com.example.nextgenitestapp.data.repository
 
 import com.example.nextgenitestapp.data.ProductAppService
-import com.example.nextgenitestapp.data.model.ProductListingResponse
+import com.example.nextgenitestapp.data.model.productDetailResponse.ProductDetailResponse
+import com.example.nextgenitestapp.data.model.productListingResponse.ProductListingResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -16,5 +17,10 @@ class ProductRepository @Inject constructor(
         Dispatchers.IO) {
         val products = productAppService.getProductsListingPageWise(category_id, page_id)
         products
+    }
+
+    suspend fun fetchProductDetail(productId: Int): Response<ProductDetailResponse> = withContext(Dispatchers.IO){
+        val product = productAppService.getProductDetail(productId)
+        product
     }
 }

@@ -1,4 +1,4 @@
-package com.example.nextgenitestapp.data.model
+package com.example.nextgenitestapp.data.model.productListingResponse
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

@@ -1,25 +1,21 @@
 package com.example.nextgenitestapp.ui.productlisting
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nextgenitestapp.R
-import com.example.nextgenitestapp.data.model.ResponseData
+import com.example.nextgenitestapp.data.model.productListingResponse.ResponseData
 import com.example.nextgenitestapp.databinding.FrProductListingBinding
 import com.example.nextgenitestapp.util.Resource
 import com.example.nextgenitestapp.util.Util.toast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ProductListingFragment : Fragment(), RecyclerViewHomeClickListener{
@@ -89,6 +85,9 @@ class ProductListingFragment : Fragment(), RecyclerViewHomeClickListener{
         }
     }
     override fun clickOnItem(data: ResponseData, card: View) {
-        context?.toast(data.toString())
+        val bundle = Bundle()
+        bundle.putInt("ProductId", data.productId!!)
+        Navigation.findNavController(card).navigate(R.id.action_productListingFragment_to_productDetailFragment, bundle)
+//        context?.toast(data.toString())
     }
 }

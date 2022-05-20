@@ -7,7 +7,7 @@
             type="android.view.View.OnClickListener"/>
         <variable
             name="product"
-            type="com.example.nextgenitestapp.data.model.ResponseData"/>
+            type="com.example.nextgenitestapp.data.model.productListingResponse.ResponseData"/>
     </data>
 
     <LinearLayout

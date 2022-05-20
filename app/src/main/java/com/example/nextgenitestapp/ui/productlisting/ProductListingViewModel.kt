@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nextgenitestapp.data.model.ProductListingResponse
-import com.example.nextgenitestapp.data.model.ResponseData
+import com.example.nextgenitestapp.data.model.productListingResponse.ProductListingResponse
+import com.example.nextgenitestapp.data.model.productListingResponse.ResponseData
 import com.example.nextgenitestapp.data.repository.ProductRepository
 import com.example.nextgenitestapp.util.Resource
 import com.example.nextgenitestapp.util.hasInternetConnection
@@ -23,7 +23,7 @@ class ProductListingViewModel @Inject constructor(
 ) : ViewModel() {
 
     var currentPage = 1
-    var productResponse: ProductListingResponse ?= null
+    var productResponse: ProductListingResponse?= null
     val productsList: MutableLiveData<Resource<ProductListingResponse>> = MutableLiveData()
 
     fun fetchProducts(category_id: Int){
